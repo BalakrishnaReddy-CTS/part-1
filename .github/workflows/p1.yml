@@ -1,0 +1,20 @@
+name: CI Workflow part-1
+
+on:  push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      # Setting environment variables
+      filename: bala.txt
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create artifacroty
+        run : echo username ${{vars.username}} password ${{secrets.password}} > $filename
+
+      - name: Display artifacroty
+        run: cat $filename
